@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="src/styles.css" />
+  <title>SkyCast App</title>
+</head>
+<body>
+  <div class="weather-app">
+    <header>
+      <form class="search-form" id="search-form">
+        <input type="search" placeholder="Enter a city.." required class="search-input" id="search-input" />
+        <input type="submit" value="Search" class="input-button" />
+      </form>
+    </header>
+    <main>
+      <div class="current-weather">
+        <div>
+          <h1 class="city" id="current-city">
+            Seoul
+          </h1>
+          <p class="current-details">
+            Friday 15:14, scattered clouds
+            <br />
+            Humidity: 
+            <strong>66%</strong>
+            , Wind: 
+            <strong>3.13km/h</strong>
+          </p>
+        </div>
+        <div class="current-temperature">
+          <span class="weather-icon">⛅</span> 
+          <span class="weather-temp">13</span>
+          <span class="weather-deg">&deg;C</span>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>
+        Coded by
+        <a href="https://github.com/Zwavhudi22"> Zwavhudi Nengalavhani</a>, is open-sourced on 
+        <a href="https://github.com/Zwavhudi22/skycast">GitHub</a> and hosted on
+        <a href="https://skycast-weatherappp.netlify.app/">Netlify</a>
+      </p>
+    </footer>
+  </div>
+  <script src="src/index.js"></script>
+</body>
+</html>
