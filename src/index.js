@@ -1,11 +1,43 @@
 function refreshWeather(response) {
   let temperatureElement = document.querySelector("#temperature");
   let cityName = document.querySelector("#current-city");
-  
+  let description = document.querySelector("#description");
+  let humidityElement = document.querySelector("#humidity");
+  let windSpeedElement = document.querySelector("#wind-speed");
+  let currentDate = document.querySelector("#current-date");
+  let date = new Date(response.data.time * 1000);
   let temperature = response.data.temperature.current;
+  let iconElement = document.querySelector("#icon");
 
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="weather-icon" />`;
+  currentDate.innerHTML = formatDate(date);
+  windSpeedElement.innerHTML = `${response.data.wind.speed}km/h`;
+  humidityElement.innerHTML = `${response.data.temperature.humidity}%`;
+  description.innerHTML = response.data.condition.description;
   cityName.innerHTML = response.data.city;
   temperatureElement.innerHTML = Math.round(temperature);
+}
+
+function formatDate(date) {
+  let minutes = date.getMinutes();
+  let hours = date.getHours();
+  let days = [
+    "Sunday", 
+    "Monday", 
+    "Tuesday", 
+    "Wednesday", 
+    "Thursday", 
+    "Friday", 
+    "Saturday"
+  ];
+  let day = days[date.getDay()];
+
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+
+  return `${day} ${hours}:${minutes}`;
+
 }
 
 function showTemperature(city) {
@@ -25,4 +57,4 @@ function displayCity(event) {
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", displayCity);
 
-showTemperature("Paris");
+showTemperature("Thohoyandou");

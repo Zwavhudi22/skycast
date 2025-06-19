@@ -75,14 +75,14 @@ a {
 }
 
 .current-temperature {
-  font-size: 48px;
+  font-size: 50px;
 }
 
 .weather-icon {
-  position: relative;
-  top: -8px;
-  font-size: 65px;
-  margin-right: -10px;
+  font-size: 88px;
+  height: 84px;
+  margin-right: -20px;
+  margin-top: 15px;
 }
 
 .weather-temp {
@@ -94,6 +94,7 @@ a {
 .weather-deg {
   position: relative;
   top: -40px;
+  margin-left: -10px;
   font-size: 28px;
   color: #4F8B99;
 }
