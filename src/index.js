@@ -1,5 +1,11 @@
 function refreshWeather(response) {
-  console.log(response.data.temperature.current);
+  let temperatureElement = document.querySelector("#temperature");
+  let cityName = document.querySelector("#current-city");
+  
+  let temperature = response.data.temperature.current;
+
+  cityName.innerHTML = response.data.city;
+  temperatureElement.innerHTML = Math.round(temperature);
 }
 
 function showTemperature(city) {
@@ -11,10 +17,12 @@ function showTemperature(city) {
 
 function displayCity(event) {
   event.preventDefault();
-  let cityName = document.querySelector("#current-city");
-  let city = document.querySelector("#search-input");
-  cityName.innerHTML = city.value;
+   let city = document.querySelector("#search-input");
+
+  showTemperature(city.value);
 }
 
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", displayCity);
+
+showTemperature("Paris");
