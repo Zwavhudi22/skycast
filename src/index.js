@@ -63,25 +63,33 @@ function getForecast(city) {
   axios.get(apiUrl).then(displayForecast);
 }
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+
+  return days[date.getDay()];
+}
+
 function displayForecast(response) {  
-  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
   let forecastHtml = "";
 
-  days.forEach(function (day) {
+  response.data.daily.forEach(function (day, index) {
+    if (index > 0 && index < 6) {
     forecastHtml =
       forecastHtml + 
       `
       <div class="weather-forecast">
-        <div class="weather-temperature-day">${day}</div>
-        <div class="weather-temperature-icon">⛅</div>
+        <div class="weather-temperature-day">${formatDay(day.time)}</div>
+        <img src="${day.condition.icon_url}" class="weather-temperature-icon" />
         <div class="weather-temperatures">
           <div class="weather-temperature">
-            <strong>13&deg;</strong>
+            <strong>${Math.round(day.temperature.maximum)}&deg;</strong>
           </div>
-          <div class="weather-temperature">9&deg;</div>
+          <div class="weather-temperature">${Math.round(day.temperature.minimum)}&deg;</div>
         </div>
       </div>
   `;
+  }
 });
 
 let forecastElement = document.querySelector("#forecast");
