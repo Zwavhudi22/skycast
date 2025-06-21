@@ -54,7 +54,33 @@ function displayCity(event) {
   showTemperature(city.value);
 }
 
+function displayForecast() {  
+  let days = ["Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml + 
+      `
+      <div class="weather-forecast">
+        <div class="weather-temperature-day">${day}</div>
+        <div class="weather-temperature-icon">⛅</div>
+        <div class="weather-temperatures">
+          <div class="weather-temperature">
+            <strong>13&deg;</strong>
+          </div>
+          <div class="weather-temperature">9&deg;</div>
+        </div>
+      </div>
+  `;
+});
+
+let forecastElement = document.querySelector("#forecast");
+forecastElement.innerHTML = forecastHtml;
+}
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", displayCity);
 
 showTemperature("Thohoyandou");
+displayForecast();
